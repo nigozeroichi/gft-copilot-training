@@ -72,4 +72,15 @@ describe('CartPage', () => {
         expect(screen.getByText('Quantity: 2')).toBeInTheDocument();
         expect(screen.getByText('Quantity: 1')).toBeInTheDocument();
     });
+
+    // Verify that an empty cart message is displayed when the cart is empty.
+    it('displays an empty cart message when there are no items', () => {
+        renderWithCartContext({
+            ...mockCartContext,
+            cartItems: []
+        });
+
+        expect(screen.getByText('Your Cart')).toBeInTheDocument();
+        expect(screen.getByText('Your cart is empty.')).toBeInTheDocument();
+    });
 });
